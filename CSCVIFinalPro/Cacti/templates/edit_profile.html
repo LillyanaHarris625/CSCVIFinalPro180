@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+</head>
+<body>
+    <h1>Edit Profile</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div>
+            {{ form.bio.label_tag }}
+            {{ form.bio }}
+            {{ form.bio.errors }}
+        </div>
+        <div>
+            {{ form.profile_picture.label_tag }}
+            {{ form.profile_picture }}
+            {{ form.profile_picture.errors }}
+        </div>
+        <button type="submit">Save Changes</button>
+    </form>
+</body>
+</html>

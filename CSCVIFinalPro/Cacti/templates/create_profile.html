@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Profile</title>
+    <style>
+        body {
+            background-color: white;
+            color: #1B5E20;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .profile-box {
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+        }
+
+        h1 {
+            color: #1B5E20;
+            text-align: center;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #CCCCCC;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            background-color: #43A047;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #1B5E20;
+        }
+
+        .image {
+            flex-basis: calc(70% - 10px);
+            margin: 10px;
+        }
+
+        .image img {
+            max-width: 100%;
+            height: 400px;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Create Profile</h1>
+    <div class="container">
+        <div class="image">
+            <img src="{% static 'Cacti/images/crProfImg1.png' %}" class="center">
+        </div>
+        <div class="profile-box">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" required>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required>
+                <label for="profile_picture">Profile Picture</label>
+                <input type="file" name="profile_picture" id="profile_picture" accept="image/*" required>
+                <button type="submit">Save Profile</button>
+            </form>
+        </div>
+        <div class="image">
+            <img src="{% static 'Cacti/images/crProfImg1.png' %}" class="center">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cactus List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F4F6F7;
+            color: #1B5E20;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #1B5E20;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px; /* Larger font size */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #C5E1A5;
+        }
+
+        th {
+            background-color: #43A047;
+            color: #FFFFFF;
+        }
+
+        tr:nth-child(even) {
+            background-color: #C8E6C9;
+        }
+
+        tr:hover {
+            background-color: #A5D6A7;
+        }
+
+        a {
+            color: #388E3C;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .add-link {
+            display: inline-block; /* Changed to inline-block */
+            margin-top: 20px;
+            text-align: center;
+            background-color: #43A047;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px; /* Larger font size */
+            text-decoration: none; /* Remove underline */
+        }
+
+        .add-link:hover {
+            background-color: #388E3C;
+        }
+    </style>
+</head>
+<body>
+    <h2>Cactus List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cactus in cacti %}
+                <tr>
+                    <td><a href="{% url 'cactus_detail' cactus.pk %}">{{ cactus.name }}</a></td>
+                    <td>{{ cactus.description }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="2">No cactus listings available.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'cactus_create' %}" class="add-link">Add New Cactus</a>
+</body>
+</html>

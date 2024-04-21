@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cactus Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F4F6F7; /* Light gray background */
+            color: #1B5E20; /* Dark green text */
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .details {
+            background-color: #FFFFFF; /* White background for details */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .details ul {
+            list-style: none; /* Remove default bullet points */
+            padding: 0;
+        }
+
+        .details li {
+            margin-bottom: 10px;
+        }
+
+        .details strong {
+            color: #43A047; /* Dark green for strong text */
+        }
+
+        .button-group {
+            text-align: center; /* Center align buttons */
+            margin-top: 20px; /* Add space between buttons and link */
+        }
+
+        .button-group a {
+            background-color: #43A047; /* Dark green button background */
+            color: #FFFFFF; /* White button text */
+            padding: 10px 20px; /* Padding for button */
+            border: none; /* Remove button border */
+            border-radius: 5px; /* Rounded button corners */
+            cursor: pointer; /* Cursor style on hover */
+            font-size: 16px; /* Button text size */
+            margin-right: 10px; /* Add some space between buttons */
+            text-decoration: none; /* Remove underline */
+        }
+
+        .button-group a:hover {
+            background-color: #388E3C; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="header">Cactus Detail</h2>
+        <div class="details">
+            <ul>
+                <li><strong>Name:</strong> {{ cactus.name }}</li>
+                <li><strong>Description:</strong> {{ cactus.description }}</li>
+                <!-- Add more details here -->
+            </ul>
+        </div>
+        <div class="button-group">
+            <a href="{% url 'cactus_update' cactus.pk %}">Edit</a>
+            <a href="{% url 'cactus_delete' cactus.pk %}">Delete</a>
+            <a href="{% url 'payment' %}" class="buy-button">Buy</a>
+        </div>
+        <a href="{% url 'cactus_list' %}" style="display: block; text-align: center; margin-top: 20px;">Back to Cactus List</a>
+    </div>
+</body>
+</html>
